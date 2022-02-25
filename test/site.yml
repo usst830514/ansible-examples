@@ -34,3 +34,4 @@
     - name: post_tasks
       debug:
         msg: post_tasks
+  name: playbook_demo
