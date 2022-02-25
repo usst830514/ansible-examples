@@ -1,0 +1,36 @@
+---
+- hosts: localhost
+  pre_tasks:
+    - name: pre_tasks
+      debug:
+        msg: pre_tasks
+  roles:
+    - role: common
+      when: false
+  tasks:
+    - name: tasks
+      debug:
+        msg: tasks
+    - block:
+        - name: block0
+          debug:
+            msg: block0
+        - name: block1
+          shell:
+            cmd: ls /t
+        - name: block2
+          debug:
+            msg: block2
+      when: true
+      rescue:
+        - name: rescue
+          debug:
+            msg: rescue
+      always:
+        - name: always
+          debug:
+            msg: always
+  post_tasks:
+    - name: post_tasks
+      debug:
+        msg: post_tasks
